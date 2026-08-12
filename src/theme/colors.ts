@@ -1,4 +1,3 @@
-
 export const colors = {
   canvas: '#F6F1E7',
   surface: '#FFFFFF',

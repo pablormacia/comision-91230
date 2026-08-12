@@ -24,7 +24,6 @@ const DATE_KEYS = Object.keys(DUE_DATES) as DueDate[]
 export default function TaskForm({ onAdd }: Props) {
   const insets = useSafeAreaInsets()
   const [open, setOpen] = useState(false)
-
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState<Category>('personal')

@@ -10,8 +10,7 @@ type Props = {
   onMountChange?: () => () => void
 }
 
-const TaskItem = memo(function TaskItem({ task, onToggle, onPress }: Props) {
- 
+const TaskItem = memo(function TaskItem({ task, onToggle, onPress }: Props) { 
   const cat = CATEGORIES[task.category]
 
   return (
@@ -20,7 +19,6 @@ const TaskItem = memo(function TaskItem({ task, onToggle, onPress }: Props) {
       onPress={() => onPress(task)}
       activeOpacity={0.75}
     >
-
       <TouchableOpacity
         style={[
           styles.checkbox,
@@ -39,7 +37,6 @@ const TaskItem = memo(function TaskItem({ task, onToggle, onPress }: Props) {
         >
           {task.title}
         </Text>
-
         <View style={styles.metaRow}>
           <View style={[styles.badge, { backgroundColor: cat.soft }]}>
             <Text style={[styles.badgeText, { color: cat.color }]}>
@@ -49,7 +46,6 @@ const TaskItem = memo(function TaskItem({ task, onToggle, onPress }: Props) {
           <Text style={styles.date}>{DUE_DATES[task.date]}</Text>
         </View>
       </View>
-
       <Text style={styles.chevron}>›</Text>
     </TouchableOpacity>
   )

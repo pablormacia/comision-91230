@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function LastTaskCard({ task }: Props) {
-
   const cat = CATEGORIES[task.category]
 
   return (

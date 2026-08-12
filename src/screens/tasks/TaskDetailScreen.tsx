@@ -1,21 +1,23 @@
 import React from 'react'
 import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { CATEGORIES, DUE_DATES, Task } from '../types'
-import { colors, radius, shadow, spacing } from '../theme'
+import { CATEGORIES, DUE_DATES, Task } from '../../types'
+import { colors, radius, screenStyles, shadow, spacing } from '../../theme'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../navigation/types'
 
-type Props = {
-  task: Task
-  onBack: () => void
-  onToggle: (id: string) => void
-  onDelete: (id: string) => void
-}
+type Props = NativeStackScreenProps<
+  RootStackParamList,
+  'TaskDetail'
+>
 
-export default function TaskDetailScreen({ task, onBack, onToggle, onDelete }: Props) {
+
+export default function TaskDetailScreen({ route, navigation }: Props) {
+  const { task } = route.params
   const cat = CATEGORIES[task.category]
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={onBack} hitSlop={8}>
+    <View style={screenStyles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()} hitSlop={8}>
         <Text style={styles.backText}>‹ Volver a la lista</Text>
       </TouchableOpacity>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -56,22 +58,6 @@ export default function TaskDetailScreen({ task, onBack, onToggle, onDelete }: P
           {task.description ||
             'Esta tarea no tiene descripción. Podés agregarla desde el formulario al crear la próxima.'}
         </Text>
-        <TouchableOpacity
-          style={[styles.action, task.completed ? styles.actionUndo : styles.actionDone]}
-          onPress={() => onToggle(task.id)}
-          activeOpacity={0.85}
-        >
-          <Text style={styles.actionText}>
-            {task.completed ? 'Marcar como pendiente' : 'Marcar como completada ✓'}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.action, styles.actionDelete]}
-          onPress={() => onDelete(task.id)}
-          activeOpacity={0.85}
-        >
-          <Text style={[styles.actionText, { color: colors.danger }]}>Eliminar tarea</Text>
-        </TouchableOpacity>
       </ScrollView>
     </View>
   )
