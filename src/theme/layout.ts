@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { colors, spacing } from './index'
+import {colors} from './colors'
+import {spacing} from './spacing'
 
 export const screenStyles = StyleSheet.create({
   container: {

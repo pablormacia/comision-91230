@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import TaskStack from './src/navigation/TaskStack'
-import { NavigationContainer } from '@react-navigation/native'
+import TabNavigator from './src/navigation/TabNavigator'
 import { StyleSheet } from 'react-native'
 
 export default function App() {
@@ -9,9 +8,7 @@ export default function App() {
     <SafeAreaProvider>
       <StatusBar style="dark" />
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <NavigationContainer>
-        <TaskStack />
-      </NavigationContainer>
+        <TabNavigator />
       </SafeAreaView>
     </SafeAreaProvider>
   )
